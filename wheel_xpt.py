@@ -131,4 +131,3 @@ def dic_contrast(dic_a,dic_b):
     dic_all["diff_b"] = dic_diff_b
 
     return dic_all
-
