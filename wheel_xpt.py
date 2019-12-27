@@ -2,6 +2,7 @@ import os
 import socket
 import json
 import yaml
+from win32com.client import Dispatch
 
 
 """使用python中的os模块测试目标ip网络是否可达，返回Trun或False"""
@@ -131,3 +132,11 @@ def dic_contrast(dic_a,dic_b):
     dic_all["diff_b"] = dic_diff_b
 
     return dic_all
+
+#将docx的word文档转换成pdf的方法，原名称不变；
+def docx_pdf(input_file):
+    word = Dispatch('Word.Application')
+    doc = word.Documents.Open(input_file)
+    doc.SaveAs(input_file.replace(".docx", ".pdf"),FileFormat=17)
+    doc.Close()
+    word.Quit()
